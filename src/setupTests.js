@@ -8,7 +8,7 @@ let savedItems = {}
 const localStorageMock = {
   setItem: (key, item) => {
     savedItems[key] = item
-    console.log(item);
+    console.log(item)
   },
   getItem: (key) => savedItems[key],
   clear: savedItems = {}
