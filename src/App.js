@@ -24,11 +24,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('mountti ', window.localStorage.getItem('loggedBlogUser'))
     blogService.getAll().then(blogs =>
       this.setState({ blogs })
     )
 
     const loggedUserJSON = window.localStorage.getItem('loggedBlogUser')
+    console.log('logged user ', loggedUserJSON)
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       this.setState({ user })
@@ -207,7 +209,7 @@ class App extends React.Component {
           {this.state.blogs.sort((a, b) => {
             return (a.likes > b.likes)
           }).reverse().map(blog => {
-            return (<Blog key={blog._id} blog={blog} />)
+            return <Blog key={blog._id} blog={blog} />
           }
           )}
         </div>

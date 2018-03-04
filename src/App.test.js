@@ -26,7 +26,8 @@ describe('<App />', () => {
     const user = {
       username: 'tester',
       token: '1231231214',
-      name: 'Teuvo Testaaja'
+      name: 'Teuvo Testaaja',
+      password: 'kekkonen'
     }
 
     beforeEach(() => {
@@ -36,6 +37,7 @@ describe('<App />', () => {
 
     it('renders the blogs after login', () => {
       app.update()
+      console.log('looged', localStorage.getItem('loggedBlogUser'))
       const blogComponents = app.find(Blog)
       console.log(blogComponents)
       expect(blogComponents.length).toEqual(blogService.blogs.length)
